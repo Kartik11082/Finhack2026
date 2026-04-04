@@ -1,0 +1,18 @@
+[
+  {
+    "feature": "market_return_7d",
+    "importance": 0.28
+  },
+  {
+    "feature": "momentum_7d",
+    "importance": 0.277
+  },
+  {
+    "feature": "volume_spike",
+    "importance": 0.274
+  },
+  {
+    "feature": "volatility_7d",
+    "importance": 0.17
+  }
+]

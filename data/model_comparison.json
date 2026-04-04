@@ -1,0 +1,16 @@
+{
+  "baseline": {
+    "accuracy": 0.429,
+    "f1": 0.415,
+    "auc": 0.407,
+    "n_rows": 214,
+    "n_tickers": 9
+  },
+  "enhanced": {
+    "accuracy": 0.463,
+    "f1": 0.507,
+    "auc": 0.465,
+    "n_rows": 214,
+    "n_tickers": 9
+  }
+}
