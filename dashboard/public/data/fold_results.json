@@ -2,26 +2,26 @@
   {
     "fold": 1,
     "baseline_accuracy": 0.457,
-    "enhanced_accuracy": 0.435
+    "enhanced_accuracy": 0.478
   },
   {
     "fold": 2,
     "baseline_accuracy": 0.343,
-    "enhanced_accuracy": 0.645
+    "enhanced_accuracy": 0.522
   },
   {
     "fold": 3,
     "baseline_accuracy": 0.4,
-    "enhanced_accuracy": 0.435
+    "enhanced_accuracy": 0.391
   },
   {
     "fold": 4,
     "baseline_accuracy": 0.343,
-    "enhanced_accuracy": 0.597
+    "enhanced_accuracy": 0.348
   },
   {
     "fold": 5,
     "baseline_accuracy": 0.6,
-    "enhanced_accuracy": 0.548
+    "enhanced_accuracy": 0.478
   }
 ]

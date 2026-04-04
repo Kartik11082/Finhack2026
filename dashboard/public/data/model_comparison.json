@@ -7,10 +7,10 @@
     "n_tickers": 9
   },
   "enhanced": {
-    "accuracy": 0.532,
-    "f1": 0.615,
-    "auc": 0.556,
-    "n_rows": 376,
-    "n_tickers": 17
+    "accuracy": 0.443,
+    "f1": 0.475,
+    "auc": 0.403,
+    "n_rows": 139,
+    "n_tickers": 6
   }
 }

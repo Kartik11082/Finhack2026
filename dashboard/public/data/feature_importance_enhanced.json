@@ -1,38 +1,38 @@
 [
   {
-    "feature": "market_return_7d",
-    "importance": 0.216
+    "feature": "volume_spike",
+    "importance": 0.243
   },
   {
-    "feature": "transcript_sentiment",
-    "importance": 0.216
+    "feature": "market_return_7d",
+    "importance": 0.226
   },
   {
     "feature": "volatility_7d",
-    "importance": 0.208
-  },
-  {
-    "feature": "volume_spike",
-    "importance": 0.197
+    "importance": 0.177
   },
   {
     "feature": "momentum_7d",
-    "importance": 0.163
+    "importance": 0.156
   },
   {
-    "feature": "sentiment_score",
-    "importance": 0.0
-  },
-  {
-    "feature": "buzz_score",
-    "importance": 0.0
+    "feature": "transcript_sentiment",
+    "importance": 0.133
   },
   {
     "feature": "sentiment_slope",
-    "importance": 0.0
+    "importance": 0.024
+  },
+  {
+    "feature": "sentiment_score",
+    "importance": 0.023
   },
   {
     "feature": "sentiment_polarity",
+    "importance": 0.018
+  },
+  {
+    "feature": "buzz_score",
     "importance": 0.0
   }
 ]
