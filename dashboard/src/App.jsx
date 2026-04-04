@@ -4,11 +4,12 @@ import SlidePrologue from "./components/SlidePrologue";
 import SlideBaseline from "./components/SlideBaseline";
 import SlideSentiment from "./components/SlideSentiment";
 import SlideComparison from "./components/SlideComparison";
+import SlideSpilloverStocks from "./components/SlideSpilloverStocks";
 
 function SlideDeck() {
   const { comparison, enhancedRows, foldResults } = useData();
   const [slide, setSlide] = useState(0);
-  const totalSlides = 4;
+  const totalSlides = 5;
 
   const navigate = (dir) => {
     const next = slide + dir;
@@ -39,7 +40,8 @@ function SlideDeck() {
     <SlidePrologue key="0" />,
     <SlideBaseline key="1" />,
     <SlideSentiment key="2" />,
-    <SlideComparison key="3" />
+    <SlideComparison key="3" />,
+    <SlideSpilloverStocks key="4" />
   ];
 
   return (
@@ -52,7 +54,7 @@ function SlideDeck() {
       </div>
 
       <div className="deck-controls">
-        {[0, 1, 2, 3].map((idx) => (
+        {[0, 1, 2, 3, 4].map((idx) => (
           <button 
             key={idx} 
             className={`deck-dot ${slide === idx ? "active" : ""}`}

@@ -47,7 +47,7 @@ export default function SlideComparison() {
     <div className="slide">
       <div className="slide-layout-split">
         <div className="main-pane">
-          <h2 className="slide-title">Conclusion</h2>
+          <h2 className="slide-title">Insights</h2>
           <p className="slide-subtitle">Applying Executive Transcript Sentiment universally lifts model prediction capability across 5 Folds.</p>
 
           <div className="big-metric-container">
