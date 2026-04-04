@@ -127,37 +127,41 @@ def main():
     }
 
     total_events = len(prices_df)
-    
+
     for idx, row in prices_df.iterrows():
         ticker = row["ticker"]
         edate = row["earnings_date"]
-        
+
         text = ""
         used_mock = False
-        
+
         folder_name = TICKER_MAP.get(ticker)
-        
+
         if folder_name and os.path.exists(os.path.join(KAGGLE_DIR, folder_name)):
             # Try to map Calendar Quarter to Kaggle Filename (YYYY_QX)
             y = edate.year
             q = (edate.month - 1) // 3 + 1
-            
-            # Since Kaggle naming and fiscal quarters offset wildly (e.g. NVDA), 
+
+            # Since Kaggle naming and fiscal quarters offset wildly (e.g. NVDA),
             # we check the exact calendar quarter, and +/- 1 quarter as a fuzzy search.
             search_targets = [
                 f"{y}_Q{q}",
-                f"{y}_Q{q-1}" if q > 1 else f"{y-1}_Q4",
-                f"{y}_Q{q+1}" if q < 4 else f"{y+1}_Q1",
+                f"{y}_Q{q - 1}" if q > 1 else f"{y - 1}_Q4",
+                f"{y}_Q{q + 1}" if q < 4 else f"{y + 1}_Q1",
             ]
-            
+
             for target in search_targets:
                 # e.g. 2020_Q1_nvda_processed.txt
                 # We wildcard match the prefix
                 folder_path = os.path.join(KAGGLE_DIR, folder_name)
-                found_file = next((f for f in os.listdir(folder_path) if f.startswith(target)), None)
-                
+                found_file = next(
+                    (f for f in os.listdir(folder_path) if f.startswith(target)), None
+                )
+
                 if found_file:
-                    with open(os.path.join(folder_path, found_file), "r", encoding="utf-8") as f:
+                    with open(
+                        os.path.join(folder_path, found_file), "r", encoding="utf-8"
+                    ) as f:
                         text = f.read()
                     break
 
@@ -166,8 +170,10 @@ def main():
             used_mock = True
             seed = sum(ord(c) for c in ticker) + edate.year + edate.month
             np.random.seed(seed)
-            mood = np.random.choice(["bullish", "neutral", "bearish"], p=[0.6, 0.3, 0.1])
-            
+            mood = np.random.choice(
+                ["bullish", "neutral", "bearish"], p=[0.6, 0.3, 0.1]
+            )
+
             bullish_phrases = [
                 "We are seeing unprecedented demand for our AI infrastructure and generative AI models.",
                 "Customers are accelerating their cloud migrations.",
@@ -180,27 +186,43 @@ def main():
                 "Supply chain constraints are impacting our ability to ship GPUs on time.",
                 "Currency fluctuations presented a modest headwind to revenue.",
             ]
-            
+
             if mood == "bullish":
-                text = " ".join(np.random.choice(bullish_phrases, 10)) + " " + " ".join(np.random.choice(bearish_phrases, 2))
+                text = (
+                    " ".join(np.random.choice(bullish_phrases, 10))
+                    + " "
+                    + " ".join(np.random.choice(bearish_phrases, 2))
+                )
             elif mood == "bearish":
-                text = " ".join(np.random.choice(bearish_phrases, 10)) + " " + " ".join(np.random.choice(bullish_phrases, 2))
+                text = (
+                    " ".join(np.random.choice(bearish_phrases, 10))
+                    + " "
+                    + " ".join(np.random.choice(bullish_phrases, 2))
+                )
             else:
-                text = " ".join(np.random.choice(bullish_phrases, 5)) + " " + " ".join(np.random.choice(bearish_phrases, 5))
-            
+                text = (
+                    " ".join(np.random.choice(bullish_phrases, 5))
+                    + " "
+                    + " ".join(np.random.choice(bearish_phrases, 5))
+                )
+
             text = text * 5  # Make it long enough to trigger chunking
 
         # Process the text (Real Kaggle or Mock)
         score = score_text_chunks(finbert, text)
-        transcript_records.append({
-            "ticker": ticker,
-            "earnings_date": edate.date(),
-            "transcript_sentiment": score
-        })
+        transcript_records.append(
+            {
+                "ticker": ticker,
+                "earnings_date": edate.date(),
+                "transcript_sentiment": score,
+            }
+        )
         success_count += 1
-        
+
         mode_str = "MOCK" if used_mock else "KAGGLE"
-        print(f"[{idx+1}/{total_events}] {ticker} {edate.date()} -> SCORE: {score:+.3f} ({mode_str})")
+        print(
+            f"[{idx + 1}/{total_events}] {ticker} {edate.date()} -> SCORE: {score:+.3f} ({mode_str})"
+        )
 
     print("\n" + "=" * 60)
     print("SAVING RESULTS")

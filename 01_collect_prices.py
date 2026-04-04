@@ -26,15 +26,23 @@ import yfinance as yf
 # Configuration
 # ---------------------------------------------------------------------------
 TICKERS: list[str] = [
-    "NVDA",
-    "AMD",
-    "MSFT",
-    "GOOGL",
-    "META",
-    "INTC",
-    "PLTR",
-    "AMZN",
-    "CRM",
+    "XOM",
+    "CVX",
+    "2222.SR",
+    "LNG",
+    "SHEL",
+    "KEX",
+    "FRO",
+    "CF",
+    "NTR",
+    "ADM",
+    "DE",
+    "CAT",
+    "HON",
+    "NEE",
+    "DUK",
+    "NESN.SW",
+    "PEP",
 ]
 
 DATE_START = pd.Timestamp("2020-01-01")
