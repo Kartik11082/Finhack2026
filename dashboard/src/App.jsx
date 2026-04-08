@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { DataProvider, useData } from "./DataContext";
+import SlideResearchAssets from "./components/SlideResearchAssets";
 import SlidePrologue from "./components/SlidePrologue";
 import SlideBaseline from "./components/SlideBaseline";
 import SlideSentiment from "./components/SlideSentiment";
@@ -9,7 +10,7 @@ import SlideSpilloverStocks from "./components/SlideSpilloverStocks";
 function SlideDeck() {
   const { comparison, enhancedRows, foldResults } = useData();
   const [slide, setSlide] = useState(0);
-  const totalSlides = 5;
+  const totalSlides = 6;
 
   const navigate = (dir) => {
     const next = slide + dir;
@@ -37,11 +38,12 @@ function SlideDeck() {
   }
 
   const slides = [
-    <SlidePrologue key="0" />,
-    <SlideBaseline key="1" />,
-    <SlideSentiment key="2" />,
-    <SlideComparison key="3" />,
-    <SlideSpilloverStocks key="4" />
+    <SlideResearchAssets key="0" />,
+    <SlidePrologue key="1" />,
+    <SlideBaseline key="2" />,
+    <SlideSentiment key="3" />,
+    <SlideComparison key="4" />,
+    <SlideSpilloverStocks key="5" />
   ];
 
   return (
@@ -54,7 +56,7 @@ function SlideDeck() {
       </div>
 
       <div className="deck-controls">
-        {[0, 1, 2, 3, 4].map((idx) => (
+        {[0, 1, 2, 3, 4, 5].map((idx) => (
           <button 
             key={idx} 
             className={`deck-dot ${slide === idx ? "active" : ""}`}
